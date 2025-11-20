@@ -1,1 +1,1 @@
-enum class Priority { HIGH, MEDIUM, LOW }
+enum class Priority{ HIGH, MEDIUM, LOW }

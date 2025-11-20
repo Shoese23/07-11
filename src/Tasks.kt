@@ -1,11 +1,10 @@
-class Tasks(val id: Int,
-            val title: String,
-            val description: String,
-            val category: String,
-            val priority: Priority,
-            val dueDate: String,
-            val isCompleted: Boolean = false,
-            val createdAt: String)
-{
-
-}
+data class Tasks(
+    val id: Int,
+    var title: String,
+    var description: String,
+    var category: String,
+    var priority: Priority,
+    var dueDate: String,
+    var isCompleted: Boolean = false,
+    var createdAt: String
+)
