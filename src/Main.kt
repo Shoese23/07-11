@@ -23,8 +23,9 @@ fun main(){
             "4" -> manager.completed()
             "5" -> manager.deleteTasks()
             "6" -> manager.showStats()
-            "0" -> { manager.saveToFile()
-                println("До свидания!")
+            "0" -> { println("Сохранены следующие задачи:")
+                manager.save()
+                println("\nДо свидания!")
                 return}
             else -> {
                 println("ERROR")

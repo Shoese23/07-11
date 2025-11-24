@@ -33,18 +33,17 @@ class TaskManager {
         val task1 = addTask(title, description, category, priority, dueDate)
         println("Задача добавлена (ID: ${task1.id})")
     }
-    fun markTaskAsCompleted(id: Int, completed: Boolean = true): Boolean {
-        val task = tasks.find { it.id == id } ?: return false
-        task.isCompleted = completed
-        return true
-    }
 
-    fun saveToFile(filename: String = "tasks.txt") {
-        File(filename).writeText(tasks.joinToString("\n"))
-    }
-    fun all(){
+
+    fun all(): String {
         val result = tasks.joinToString("\n")
-        print("$result")}
+        print("$result")
+        return result}
+
+    fun save(){
+        val file = File("tasks.txt")
+        val res = all()
+        file.writeText("$res")}
 
     fun findTitle(title: String): List<Tasks> {
         return tasks.filter { it.title.contains(title, ignoreCase = true) }
@@ -75,6 +74,7 @@ class TaskManager {
             }
         }
     }
+
     fun mark(id: Int, completed: Boolean = true): Boolean {
         val task = tasks.find { it.id == id } ?: return false
         task.isCompleted = completed
@@ -90,6 +90,7 @@ class TaskManager {
             println("Задача с таким ID не найдена.")
         }
     }
+
     fun deleteTask(id: Int): Boolean {
         val task = tasks.find { it.id == id } ?: return false
         tasks.remove(task)
@@ -105,6 +106,7 @@ class TaskManager {
             println("Задача с таким ID не найдена.")
         }
     }
+
     fun stats(): Map<String, Int> {
         return mapOf(
             "total" to tasks.size,
