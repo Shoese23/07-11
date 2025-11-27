@@ -37,13 +37,13 @@ class Task {
 
     fun all(): String {
         val result = tasks.joinToString("\n")
-        print("$result")
+        print(result)
         return result}
 
     fun save(){
         val file = File("tasks.txt")
         val res = all()
-        file.writeText("$res")}
+        file.writeText(res)}
 
     fun findTitle(title: String): List<Tasks> {
         return tasks.filter { it.title.contains(title, ignoreCase = true) }
@@ -51,9 +51,7 @@ class Task {
     fun findCategory(category: String): List<Tasks> {
         return tasks.filter { it.category.contains(category, ignoreCase = true) }
     }
-    fun findPriority(priority: Priority): List<Tasks> {
-        return tasks.filter { it.priority == priority }
-    }
+
     fun findTask() {
         print("Искать по названию, категории или приоритету? (title/category/priority): ")
         val type = readlnOrNull() ?: return
@@ -65,7 +63,7 @@ class Task {
             "title" -> findTitle(query).forEach { print(it) }
             "category" -> findCategory(query).forEach { print(it) }
             "priority" -> {
-                val priority = try {
+                try {
                     Priority.valueOf(query.uppercase())
                 } catch (e: IllegalArgumentException) {
                     println("Неверный приоритет. Используйте: HIGH, MEDIUM, LOW")
