@@ -2,7 +2,7 @@ import kotlin.system.exitProcess
 import java.io.File
 
 fun main(){
-    val manager = TaskManager()
+    val manager = Task()
     val file = File("tasks.txt")
     while(true){
         println("\n=== TO-DO LIST ===\n" +

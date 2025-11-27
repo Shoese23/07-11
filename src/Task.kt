@@ -1,7 +1,7 @@
 import java.io.File
 import java.time.LocalDate
 
-class TaskManager {
+class Task {
     val tasks = mutableListOf<Tasks>()
     var nextId = 1
 
